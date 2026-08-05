@@ -10,6 +10,7 @@ export function FormularioDeEvento() {
       <TituloFormulario>
         Preencha os dados do evento:
       </TituloFormulario>
+      <div className='campos'>
       <CampoDeFormulario>
         <Label htmlFor="nome">
           Qual o nome do evento?
@@ -20,6 +21,16 @@ export function FormularioDeEvento() {
         placeholder="Summer dev hits"
         />
       </CampoDeFormulario>
+      <CampoDeFormulario>
+        <Label htmlFor="dataEvento">
+          Qual a data do evento?
+        </Label>
+        <CampoDeEntrada 
+        type="date" 
+        id="dataEvento"
+        />
+      </CampoDeFormulario>
+      </div>
     </form>
   )
 }
