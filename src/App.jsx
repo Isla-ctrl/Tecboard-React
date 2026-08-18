@@ -58,15 +58,24 @@ function App() {
         aoSubmeter={adicionarEvento} 
       />
       <section className='container'>
-        {temas.map(function (item) {
+        {temas.map(function (tema) {
+          if (!eventos.some(function(evento) {
+            return evento.tema.id == tema.id;
+          })) {
+            return null
+          }
 
           return (
-            <section key={item.id}>
-              <Tema tema={item} />
+            <section key={tema.id}>
+              <Tema tema={tema} />
               <div className="eventos">
-                {eventos.map(function (item, index) {
+                {eventos
+                .filter(function (evento) {
+                  return evento.tema.id == tema.id;
+                })
+                .map(function (evento, index) {
 
-                return <CardEvento evento={item} key={index} />
+                return <CardEvento evento={evento} key={index} />
               })}
               </div>
             </section>
