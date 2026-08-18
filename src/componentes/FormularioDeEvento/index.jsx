@@ -7,8 +7,22 @@ import { Botao } from '../botao';
 import { ListaSuspensa } from '../ListaSuspensa';
 
 export function FormularioDeEvento({ temas }) {
+
+  function aoFormSubmetido(formData) {
+    const evento = {
+      capa: formData.get('capa'),
+      tema: temas.find(function (item) {
+        return item.id == formData.get('tema')
+      }),
+      data: new Date(formData.get('dataEvento')),
+      titulo: formData.get('nomeEvento')
+    }
+
+    console.log(evento)
+  }
+
   return (
-    <form className="form-evento">
+    <form className="form-evento" action={aoFormSubmetido}>
       <TituloFormulario>
         Preencha os dados do evento:
       </TituloFormulario>
