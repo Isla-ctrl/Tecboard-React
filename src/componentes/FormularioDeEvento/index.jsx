@@ -6,7 +6,7 @@ import { TituloFormulario } from "../TituloFormulario";
 import { Botao } from '../botao';
 import { ListaSuspensa } from '../ListaSuspensa';
 
-export function FormularioDeEvento({ temas }) {
+export function FormularioDeEvento({ temas, aoSubmeter }) {
 
   function aoFormSubmetido(formData) {
     const evento = {
@@ -18,7 +18,7 @@ export function FormularioDeEvento({ temas }) {
       titulo: formData.get('nomeEvento')
     }
 
-    console.log(evento)
+    aoSubmeter(evento)
   }
 
   return (
@@ -35,6 +35,7 @@ export function FormularioDeEvento({ temas }) {
         type="text" 
         id="nome" 
         placeholder="Summer dev hits"
+        name="nomeEvento"
         />
       </CampoDeFormulario>
       <CampoDeFormulario>
@@ -55,13 +56,17 @@ export function FormularioDeEvento({ temas }) {
         <CampoDeEntrada 
         type="date" 
         id="dataEvento"
+        name="dataEvento"
         />
       </CampoDeFormulario>
       <CampoDeFormulario>
         <Label htmlFor="dataEvento">
           Qual o tema do evento?
         </Label>
-        <ListaSuspensa id="tema" name="tema" itens={temas} />
+        <ListaSuspensa 
+        id="tema" 
+        name="tema" 
+        itens={temas} />
       </CampoDeFormulario>
       </div>
       <div className='acoes'>
